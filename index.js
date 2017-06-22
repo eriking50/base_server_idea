@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.set('view engine', 'ejs')
 
 //Conexão com o Servidor de Banco de Dados
-MongoClient.connect('mongodb://eriking50:b3rgk4mp@ds119302.mlab.com:19302/mynewlist', (err, database) => {
+MongoClient.connect('mongodb://linkdobancodedados', (err, database) => {
   if (err) return console.log(err)
   db = database
   app.listen(3000, () => {
