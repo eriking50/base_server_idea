@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+            <script></script>
+            <meta charset="UTF-8">
+            <title>Servidor</title>
+    </head>
+    <body>
+        <style>
+            body {
+                background-color: white;
+            }
+
+            form {
+                text-align: center;
+            }
+
+            li {
+                margin: 10px;
+                float: left;
+                height: 200px;
+                width: 100px;
+                padding-left: 10px;
+                color: white;
+                list-style-type: none;
+                border-radius: 25px;
+                border: 3px solid
+            }
+
+            #pronto {
+                border-color: rgba(74,191,123,1);
+                background: rgba(146,221,177,1);
+                background: -moz-linear-gradient(top, rgba(146,221,177,1) 0%, rgba(117,209,156,1) 56%, rgba(74,191,123,1) 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(146,221,177,1)), color-stop(56%, rgba(117,209,156,1)), color-stop(100%, rgba(74,191,123,1)));
+                background: -webkit-linear-gradient(top, rgba(146,221,177,1) 0%, rgba(117,209,156,1) 56%, rgba(74,191,123,1) 100%);
+                background: -o-linear-gradient(top, rgba(146,221,177,1) 0%, rgba(117,209,156,1) 56%, rgba(74,191,123,1) 100%);
+                background: -ms-linear-gradient(top, rgba(146,221,177,1) 0%, rgba(117,209,156,1) 56%, rgba(74,191,123,1) 100%);
+                background: linear-gradient(to bottom, rgba(146,221,177,1) 0%, rgba(117,209,156,1) 56%, rgba(74,191,123,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92ddb1', endColorstr='#4abf7b', GradientType=0 );
+            }
+
+            #CTI {
+                border-color: rgba(250,15,46,1);
+                background: rgba(255,112,131,1);
+                background: -moz-linear-gradient(top, rgba(255,112,131,1) 0%, rgba(255,71,96,1) 56%, rgba(250,15,46,1) 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,112,131,1)), color-stop(56%, rgba(255,71,96,1)), color-stop(100%, rgba(250,15,46,1)));
+                background: -webkit-linear-gradient(top, rgba(255,112,131,1) 0%, rgba(255,71,96,1) 56%, rgba(250,15,46,1) 100%);
+                background: -o-linear-gradient(top, rgba(255,112,131,1) 0%, rgba(255,71,96,1) 56%, rgba(250,15,46,1) 100%);
+                background: -ms-linear-gradient(top, rgba(255,112,131,1) 0%, rgba(255,71,96,1) 56%, rgba(250,15,46,1) 100%);
+                background: linear-gradient(to bottom, rgba(255,112,131,1) 0%, rgba(255,71,96,1) 56%, rgba(250,15,46,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7083', endColorstr='#fa0f2e', GradientType=0 );
+            }
+
+            #normal {
+                border-color: rgba(73,165,191,1);
+                background: rgba(147,206,222,1);
+                background: -moz-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 56%, rgba(73,165,191,1) 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(147,206,222,1)), color-stop(56%, rgba(117,189,209,1)), color-stop(100%, rgba(73,165,191,1)));
+                background: -webkit-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 56%, rgba(73,165,191,1) 100%);
+                background: -o-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 56%, rgba(73,165,191,1) 100%);
+                background: -ms-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 56%, rgba(73,165,191,1) 100%);
+                background: linear-gradient(to bottom, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 56%, rgba(73,165,191,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=0 );
+            }
+
+            li:hover{
+                width: 300px;
+                height: 300px;
+                text-align: center;
+                display: block;
+            }
+
+            p {
+                font-family: verdana;
+                font-size: 14px;
+            }
+        </style>
+
+        <form action="/animes" method="POST">
+                <input type="text" placeholder="Modelo" name="modelo">
+                <input type="text" placeholder="Marca" name="marca">
+                <input type="text" placeholder="Série" name="serie">
+                <input type="text" placeholder="Status" name="status">
+                <input type="text" placeholder="Lote" name="lote">
+            <button type="submit">Submit</button>
+        </form>
+        <ul class="animes">
+            <% for(var i=0; i<animes.length; i++) {%>
+                <% if(animes[i].status == 'Pronta'){ %>
+                    <li class="animes" id="pronto">
+                    <% } else if(animes[i].status == 'CTI'){ %>  
+                    <li class="animes" id="CTI">
+                    <% } else{ %> 
+                    <li class="animes" id="normal">
+                    <% } %>
+                    <p class="marca">Marca:<span> <%= animes[i].marca %></span></p>
+                    <p class="modelo">Modelo:<span> <%= animes[i].modelo %></span></p>
+                    <p class="serie">Série:<span> <%= animes[i].serie %></span></p>
+                    <p class="status">Status:<span> <%= animes[i].status %></span></p>
+                    <p class="lote">Lote:<span> <%= animes[i].lote %></span></p>
+                </li>
+            <% } %>
+        </ul>
+    </body>
+</html>
